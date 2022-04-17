@@ -10,6 +10,14 @@ public class EntryView {
 
     public static String scanInput() {
         System.out.printf("숫자를 입력해주세요 : ");
-        return Console.readLine();
+        String input = Console.readLine();
+        validateInput(input);
+        return input;
+    }
+
+    private static void validateInput(String input) {
+        if (input.length() >= 4 || input.length() < 0) {
+            throw new IllegalArgumentException("3자리 수만 입력 가능합니다.");
+        }
     }
 }
