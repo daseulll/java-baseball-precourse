@@ -16,10 +16,14 @@ public class Application {
         if (bullsAndCowsGame.getStrikeCount() == 3) {
             endGame(bullsAndCowsGame);
         }
+
+        if (bullsAndCowsGame.getStrikeCount() < 3) {
+            retryGame(bullsAndCowsGame);
+        }
     }
 
     private static BullsAndCowsGame startGame() {
-        List<Integer> opponentNumbers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
+        List<Integer> opponentNumbers = pickUniqueNumbersInRange(1, 9, 3);
 
         String input = EntryView.scanInput();
         List<Integer> inputNumbers = toIntList(input);
@@ -29,14 +33,45 @@ public class Application {
         return bullsAndCowsGame;
     }
 
-    private static BullsAndCowsGame endGame(BullsAndCowsGame game) {
+    private static List<Integer> pickUniqueNumbersInRange(int min, int max, int count) {
+        List<Integer> uniqueNumbers = new ArrayList<>();
+
+        while (uniqueNumbers.size() < count) {
+            pickUniqueNumberInRange(uniqueNumbers, min, max);
+        }
+        return uniqueNumbers;
+    }
+
+    private static void pickUniqueNumberInRange(List<Integer> uniqueNumbers, int min, int max) {
+        int num = Randoms.pickNumberInRange(min, max);
+        while (!uniqueNumbers.contains(num)) {
+            uniqueNumbers.add(num);
+        }
+    }
+
+    private static void endGame(BullsAndCowsGame game) {
+        game.end();
         ResultView.showEnding(game);
         String answer = ResultView.AskRestartOrTerminate();
 
         if (answer.equals("1")) {
             main(new String[]{});
         }
-        return game;
+    }
+
+    private static void retryGame(BullsAndCowsGame game) {
+        String input = EntryView.scanInput();
+        List<Integer> inputNumbers = toIntList(input);
+        game.retry(inputNumbers);
+        ResultView.showResult(game);
+
+        if (game.getStrikeCount() == 3) {
+            endGame(game);
+        }
+
+        if (!game.isEnded()) {
+            retryGame(game);
+        }
     }
 
     private static List<Integer> toIntList(String input) {

@@ -9,6 +9,7 @@ public class BullsAndCowsGame {
     private List<Integer> inputNumbers;
     private int strikeCount = 0;
     private int ballCount = 0;
+    private boolean isEnded = false;
 
     public BullsAndCowsGame(List<Integer> opponentNumbers, List<Integer> inputNumbers) {
         this.opponentNumbers = opponentNumbers;
@@ -17,6 +18,18 @@ public class BullsAndCowsGame {
 
     public void start() {
         CompareNumbers();
+    }
+
+    public void retry(List<Integer> inputNumbers) {
+        this.inputNumbers = inputNumbers;
+        this.strikeCount = 0;
+        this.ballCount = 0;
+        this.isEnded = false;
+        CompareNumbers();
+    }
+
+    public void end() {
+        this.isEnded = true;
     }
 
     private void CompareNumbers() {
@@ -50,5 +63,13 @@ public class BullsAndCowsGame {
 
     public int getBallCount() {
         return ballCount;
+    }
+
+    public void setInputNumbers(List<Integer> inputNumbers) {
+        this.inputNumbers = inputNumbers;
+    }
+
+    public boolean isEnded() {
+        return this.isEnded;
     }
 }
