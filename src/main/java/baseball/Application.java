@@ -1,14 +1,11 @@
 package baseball;
 
 import baseball.domain.BullsAndCowsGame;
-import baseball.domain.User;
 import baseball.view.EntryView;
-import camp.nextstep.edu.missionutils.Console;
+import baseball.view.ResultView;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -18,7 +15,10 @@ public class Application {
         String input = EntryView.scanInput();
         List<Integer> inputNumbers = toIntList(input);
 
-        new BullsAndCowsGame(opponentNumbers, inputNumbers).start();
+        BullsAndCowsGame bullsAndCowsGame = new BullsAndCowsGame(opponentNumbers, inputNumbers);
+        bullsAndCowsGame.start();
+
+        ResultView.showResult(bullsAndCowsGame);
     }
 
     private static List<Integer> toIntList(String input) {
