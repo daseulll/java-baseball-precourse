@@ -1,11 +1,11 @@
 package baseball.view;
 
-import baseball.domain.BullsAndCowsGame;
+import baseball.domain.BaseBallGame;
 import camp.nextstep.edu.missionutils.Console;
 
 public class ResultView {
 
-    public static void showResult(BullsAndCowsGame game) {
+    public static void showResult(BaseBallGame game) {
         String resultStr = "";
         if (game.getBallCount() > 0 && game.getStrikeCount() > 0) {
             resultStr = game.getBallCount() + "볼" + " " + game.getStrikeCount() + "스트라이크";
@@ -26,7 +26,7 @@ public class ResultView {
         System.out.println(resultStr);
     }
 
-    public static void showEnding(BullsAndCowsGame game) {
+    public static void showEnding(BaseBallGame game) {
         System.out.println(game.getStrikeCount() + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 

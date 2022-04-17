@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-class BullsAndCowsGameTest {
+class BaseBallGameTest {
 
     @Test
     @DisplayName("상대방과 같은 수 입력했을 때 strike 카운트")
@@ -17,7 +17,7 @@ class BullsAndCowsGameTest {
         List<Integer> opponentNumbers = new ArrayList<Integer>(Arrays.asList(1, 2, 3));
         List<Integer> inputNumbers = new ArrayList<Integer>(Arrays.asList(1, 2, 3));
 
-        BullsAndCowsGame game = new BullsAndCowsGame(opponentNumbers, inputNumbers);
+        BaseBallGame game = new BaseBallGame(opponentNumbers, inputNumbers);
         game.start();
 
         Assertions.assertThat(game.getStrikeCount()).isEqualTo(3);
@@ -29,7 +29,7 @@ class BullsAndCowsGameTest {
         List<Integer> opponentNumbers = new ArrayList<Integer>(Arrays.asList(1, 2, 3));
         List<Integer> inputNumbers = new ArrayList<Integer>(Arrays.asList(2, 4, 5));
 
-        BullsAndCowsGame game = new BullsAndCowsGame(opponentNumbers, inputNumbers);
+        BaseBallGame game = new BaseBallGame(opponentNumbers, inputNumbers);
         game.start();
 
         Assertions.assertThat(game.getBallCount()).isEqualTo(1);

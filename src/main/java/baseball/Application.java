@@ -1,6 +1,6 @@
 package baseball;
 
-import baseball.domain.BullsAndCowsGame;
+import baseball.domain.BaseBallGame;
 import baseball.view.EntryView;
 import baseball.view.ResultView;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        BullsAndCowsGame bullsAndCowsGame = startGame();
+        BaseBallGame bullsAndCowsGame = startGame();
         ResultView.showResult(bullsAndCowsGame);
 
         if (bullsAndCowsGame.getStrikeCount() == 3) {
@@ -22,13 +22,13 @@ public class Application {
         }
     }
 
-    private static BullsAndCowsGame startGame() {
+    private static BaseBallGame startGame() {
         List<Integer> opponentNumbers = pickUniqueNumbersInRange(1, 9, 3);
 
         String input = EntryView.scanInput();
         List<Integer> inputNumbers = toIntList(input);
 
-        BullsAndCowsGame bullsAndCowsGame = new BullsAndCowsGame(opponentNumbers, inputNumbers);
+        BaseBallGame bullsAndCowsGame = new BaseBallGame(opponentNumbers, inputNumbers);
         bullsAndCowsGame.start();
         return bullsAndCowsGame;
     }
@@ -49,7 +49,7 @@ public class Application {
         }
     }
 
-    private static void endGame(BullsAndCowsGame game) {
+    private static void endGame(BaseBallGame game) {
         game.end();
         ResultView.showEnding(game);
         String answer = ResultView.AskRestartOrTerminate();
@@ -59,7 +59,7 @@ public class Application {
         }
     }
 
-    private static void retryGame(BullsAndCowsGame game) {
+    private static void retryGame(BaseBallGame game) {
         String input = EntryView.scanInput();
         List<Integer> inputNumbers = toIntList(input);
         game.retry(inputNumbers);

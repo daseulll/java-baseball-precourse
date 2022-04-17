@@ -1,17 +1,15 @@
 package baseball.domain;
 
-import baseball.view.ResultView;
-
 import java.util.List;
 
-public class BullsAndCowsGame {
+public class BaseBallGame {
     private List<Integer> opponentNumbers;
     private List<Integer> inputNumbers;
     private int strikeCount = 0;
     private int ballCount = 0;
     private boolean isEnded = false;
 
-    public BullsAndCowsGame(List<Integer> opponentNumbers, List<Integer> inputNumbers) {
+    public BaseBallGame(List<Integer> opponentNumbers, List<Integer> inputNumbers) {
         this.opponentNumbers = opponentNumbers;
         this.inputNumbers = inputNumbers;
     }
