@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import baseball.view.ResultView;
+
 import java.util.List;
 
 public class BullsAndCowsGame {
@@ -15,6 +17,10 @@ public class BullsAndCowsGame {
 
     public void start() {
         CompareNumbers();
+    }
+
+    public void end() {
+        ResultView.showEnd(this);
     }
 
     private void CompareNumbers() {

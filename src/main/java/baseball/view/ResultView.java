@@ -20,4 +20,8 @@ public class ResultView {
 
         System.out.println(resultStr);
     }
+
+    public static void showEnd(BullsAndCowsGame game) {
+        System.out.println(game.getStrikeCount() + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
 }

@@ -17,8 +17,11 @@ public class Application {
 
         BullsAndCowsGame bullsAndCowsGame = new BullsAndCowsGame(opponentNumbers, inputNumbers);
         bullsAndCowsGame.start();
-
         ResultView.showResult(bullsAndCowsGame);
+
+        if (bullsAndCowsGame.getStrikeCount() == input.length()) {
+            bullsAndCowsGame.end();
+        }
     }
 
     private static List<Integer> toIntList(String input) {
