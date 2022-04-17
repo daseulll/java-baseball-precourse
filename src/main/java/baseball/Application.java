@@ -10,6 +10,15 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
+        BullsAndCowsGame bullsAndCowsGame = startGame();
+        ResultView.showResult(bullsAndCowsGame);
+
+        if (bullsAndCowsGame.getStrikeCount() == 3) {
+            endGame(bullsAndCowsGame);
+        }
+    }
+
+    private static BullsAndCowsGame startGame() {
         List<Integer> opponentNumbers = Randoms.pickUniqueNumbersInRange(1, 9, 3);
 
         String input = EntryView.scanInput();
@@ -17,11 +26,17 @@ public class Application {
 
         BullsAndCowsGame bullsAndCowsGame = new BullsAndCowsGame(opponentNumbers, inputNumbers);
         bullsAndCowsGame.start();
-        ResultView.showResult(bullsAndCowsGame);
+        return bullsAndCowsGame;
+    }
 
-        if (bullsAndCowsGame.getStrikeCount() == input.length()) {
-            bullsAndCowsGame.end();
+    private static BullsAndCowsGame endGame(BullsAndCowsGame game) {
+        ResultView.showEnding(game);
+        String answer = ResultView.AskRestartOrTerminate();
+
+        if (answer.equals("1")) {
+            main(new String[]{});
         }
+        return game;
     }
 
     private static List<Integer> toIntList(String input) {

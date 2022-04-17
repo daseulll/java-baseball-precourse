@@ -19,10 +19,6 @@ public class BullsAndCowsGame {
         CompareNumbers();
     }
 
-    public void end() {
-        ResultView.showEnd(this);
-    }
-
     private void CompareNumbers() {
         for (int i = 0; i < opponentNumbers.size(); i++) {
             Integer opponentNumber = opponentNumbers.get(i);
