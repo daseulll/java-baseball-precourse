@@ -14,6 +14,10 @@ public class ResultView {
             resultStr += game.getStrikeCount() + "스트라이크";
         }
 
+        if (game.getBallCount() == 0 && game.getStrikeCount() == 0) {
+            resultStr = "낫싱";
+        }
+
         System.out.println(resultStr);
     }
 }
