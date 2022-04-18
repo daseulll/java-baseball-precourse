@@ -22,13 +22,36 @@ public class BaseBallGame {
         List<Integer> inputNumbers = EntryView.getInput();
 
         BaseBallGame baseBallGame = new BaseBallGame(opponentNumbers, inputNumbers);
-        baseBallGame.play();
+        baseBallGame.playWithResult();
+    }
+
+    public void playWithResult() {
+        play();
+        ResultView.showResult(this);
+        endOrRetryByResult();
     }
 
     public void play() {
         CompareNumbers();
-        ResultView.showResult(this);
+    }
 
+    private void retry() {
+        this.inputNumbers = EntryView.getInput();
+        this.strikeCount = 0;
+        this.ballCount = 0;
+        playWithResult();
+    }
+
+    private void end() {
+        ResultView.showEnding(this);
+        String answer = ResultView.AskRestartOrTerminate();
+
+        if (answer.equals("1")) {
+            BaseBallGame.start();
+        }
+    }
+
+    private void endOrRetryByResult() {
         if (strikeCount == 3) {
             end();
             return;
@@ -36,22 +59,6 @@ public class BaseBallGame {
 
         if (strikeCount < 3) {
             retry();
-        }
-    }
-
-    public void retry() {
-        this.inputNumbers = EntryView.getInput();
-        this.strikeCount = 0;
-        this.ballCount = 0;
-        play();
-    }
-
-    public void end() {
-        ResultView.showEnding(this);
-        String answer = ResultView.AskRestartOrTerminate();
-
-        if (answer.equals("1")) {
-            BaseBallGame.start();
         }
     }
 

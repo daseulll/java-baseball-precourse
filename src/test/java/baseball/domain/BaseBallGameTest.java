@@ -18,7 +18,7 @@ class BaseBallGameTest {
         List<Integer> inputNumbers = new ArrayList<Integer>(Arrays.asList(1, 2, 3));
 
         BaseBallGame game = new BaseBallGame(opponentNumbers, inputNumbers);
-        game.start();
+        game.play();
 
         Assertions.assertThat(game.getStrikeCount()).isEqualTo(3);
     }
@@ -30,7 +30,7 @@ class BaseBallGameTest {
         List<Integer> inputNumbers = new ArrayList<Integer>(Arrays.asList(2, 4, 5));
 
         BaseBallGame game = new BaseBallGame(opponentNumbers, inputNumbers);
-        game.start();
+        game.play();
 
         Assertions.assertThat(game.getBallCount()).isEqualTo(1);
     }
